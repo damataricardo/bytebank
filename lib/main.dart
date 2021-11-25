@@ -8,18 +8,24 @@ class BytebankApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body:ListaTransferencias(),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.green,
+          ).copyWith(
+            secondary: Colors.blueAccent[700],
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: TextButton.styleFrom(
+              backgroundColor: Colors.blueAccent[700]
+            )
+          )
       ),
+      home: ListaTransferencias(),
     );
   }
 }
 
 class FormularioTransferencia extends StatefulWidget {
-
-
-
-
 
   @override
   State<StatefulWidget> createState() {
