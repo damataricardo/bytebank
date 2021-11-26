@@ -23,7 +23,17 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return MaterialApp(
+        theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.green,
+    ).copyWith(
+      secondary: Colors.blueAccent[700],
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+    style: TextButton.styleFrom(
+    backgroundColor: Colors.blueAccent[700]))),
+    home: Scaffold(
         appBar: AppBar(
           title: Text(_tituloAppBar),
         ),
@@ -46,7 +56,8 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
               ),
             ],
           ),
-        ));
+        )),
+    );
   }
 
   void _criaTransferencia(BuildContext context) {

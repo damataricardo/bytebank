@@ -16,26 +16,37 @@ class ListaTransferencias extends StatefulWidget {
 class ListaTransferenciasState extends State<ListaTransferencias> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(_tiutloAppBar),
-      ),
-      body: ListView.builder(
-          itemCount: widget._transferencias.length,
-          itemBuilder: (context, indice) {
-            final transferencia = widget._transferencias[indice];
-            return ItemTransferencia(transferencia);
-          }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          final Future future =
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormularioTransferencia();
-          }));
-          future.then(
-              (transferenciaRecebida) => _atualiza(transferenciaRecebida));
-        },
-        child: Icon(Icons.add),
+    return MaterialApp(
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+            primarySwatch: Colors.green,
+          ).copyWith(
+            secondary: Colors.blueAccent[700],
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: TextButton.styleFrom(
+                  backgroundColor: Colors.blueAccent[700]))),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(_tiutloAppBar),
+        ),
+        body: ListView.builder(
+            itemCount: widget._transferencias.length,
+            itemBuilder: (context, indice) {
+              final transferencia = widget._transferencias[indice];
+              return ItemTransferencia(transferencia);
+            }),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            final Future future =
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return FormularioTransferencia();
+            }));
+            future.then(
+                (transferenciaRecebida) => _atualiza(transferenciaRecebida));
+          },
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
