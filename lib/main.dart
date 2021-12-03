@@ -1,12 +1,21 @@
 import 'dart:ffi';
 
+import 'package:bytebank/database/app_database.dart';
 import 'package:bytebank/screens/transferencia/contact_form.dart';
 import 'package:bytebank/screens/transferencia/contacts_list.dart';
 import 'package:bytebank/screens/transferencia/dashboard.dart';
 import 'package:bytebank/screens/transferencia/lista.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(BytebankApp());
+import 'models/contact.dart';
+
+void main() {
+  runApp(BytebankApp());
+  save(Contact(0,'alex', 1000)).then((id){
+    save(Contact(0, 'ricardo', 10000));
+       findAll().then((contacts) => debugPrint(contacts.toString()));
+  });
+}
 
 class BytebankApp extends StatelessWidget {
   @override
